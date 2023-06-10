@@ -1,0 +1,15 @@
+server:
+  port: 8081
+spring:
+  application:
+    ###服务的名称
+    name: mayikt-edu
+  datasource:
+    password: root
+    username: wo1elzuItf,k
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xt?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+logging:
+  level:
+    ###打印mybatis日志
+    com.fzp.edu.mapper: debug
