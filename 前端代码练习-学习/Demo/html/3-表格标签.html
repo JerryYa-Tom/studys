@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-表格标签.html</title>
+</head>
+<body>
+    <!--表格  
+        align="center" 整个表格始终居中  默认靠在
+        width=1000px 让1、2、3、4 平分 1000px 
+        不确定： height=400px 使用在table上表示全table内 表高400px
+                在一个td使用height=200px那么剩下其他的高 H= （table） - （td） 
+        bgcolor="red" 背景色 红色
+        border="1" 边框线大小1px  以下单位都为px
+        cellspacing="20" 相邻元素边款线与元素边框线之间中间的距离 0px表示重合
+        cellpadding="12" 元素边款中心点与元素边框中心点的距离
+     -->
+    <table  align="center" width=900px  border="1" cellspacing="0"  cellpadding="12">
+        <caption>表名</caption>
+        <tr>
+            <!--表头 默认自动加粗 居中 -->
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>职业</th>
+            <th>性别</th>
+        </tr>
+
+        <tr  align="center" >
+            <!--
+                在td使用 width=400px表示该td不与其他td平分table的 width=1000px
+                height=400px 使用在table上表示全 table内 表高400px
+                    在一个td使用height=200px那么剩下其他的高    需要注意还需要减去空隙吗？
+            -->
+            <td width=400px height=200px >1</td>
+            <td>2</td>
+            <td >3</td>
+            <td>4</td>
+        </tr>
+
+        <tr>
+            <!-- align="center" 整个表格始终居中  默认靠在-->
+            <td align="center">一</td>
+            <td>二</td>
+            <td align="center">三</td>
+            <td rowspan="2">四</td>
+        </tr>
+
+        <!--合并表格 align="center" 
+            列合并 colspan="2" 合并了该td 和后面的一个td 一个2个表格td
+            行合并 rowspan="2" 合并了该td 和下面的一个td 一个2个表格td> -->
+        <tr align="center">
+            <td colspan="2" >I</td>
+            <td>III</td>
+        </tr>
+
+        <tr align="center">
+            <td colspan="4">合并了四列表格</td>
+        </tr>
+
+        <tr align="center" >
+            <td  colspan="4" >
+                <img src="../../QQ头像.jpg" width=200px height=200px>
+            </td>
+        </tr>
+        
+    </table>
+</body>
+</html>

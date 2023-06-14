@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-列表、表单、选框和文本域.html</title>
+</head>
+<body>
+    <!--无序列表 样式 type="circle" 
+默认实心圆圈（就是不写type） circle空心圆圈  square正方块-->
+    <ul type="square">
+        <li>第一条</li>
+        <li>第三条</li>
+        <li>第四条</li>
+        <li>第五条</li>
+        <li>
+            <a target="_blank" href="http://www.baidu.com/">点击跳转到百度</a>
+        </li>
+    </ul>
+
+    <!--有序列表 type="1"默认不写使用的是数字 还只有A a i I-->
+    <ol>
+        <li>第一</li>
+        <li>第三</li>
+        <li>第四</li>
+        <li>第五</li>
+        <li>
+            <a target="_blank" href="http://www.baidu.com/">点击跳转到百度</a>
+        </li>
+    </ol>
+
+    <!--自定义列表-->
+    <dl>
+        <dt>标题：</dt>
+        <dd>解释内容</dd>
+        <dd><a target="_blank" href="http://www.baidu.com/">点击跳转到百度</a></dd>
+    </dl>
+
+     <!-- 在元素后面使用该 即可换行显示 -->
+     <br>
+
+    <!--表单 action="接口地址" method="请求方式"-->
+    <form action="http://127.0.0.1:8080/test2" method="GET">
+        <!--文本输入框 text可以看见 name标识
+            /test?user=11122&pwd=11111
+            password密码默认不可看见点击小眼睛即可查看
+            submit默认显示提交
+            placeholder="输入框提示"
+             -->
+            <input type="text" name="user" placeholder="输入框提示">
+            <input type="password" name="pwd" placeholder="输入密码"> 
+            <br>
+            
+        <input type="text" name="name" placeholder="请输入姓名">
+        <input type="text" name="age" placeholder="请输入年龄"> 
+        <br>
+
+        <input type="submit" value="提交表单">
+        <input type="button" value="登录！！！"> 
+        <br>
+
+        <input type="submit" value="注册">
+        <input type="submit" value="登录"> 
+        <input type="reset" value="重置">
+        <br>
+        
+    <!--单选框   checked表示默认选择该选项框 点击一下就可以取消默认选中-->
+    <input type="radio" checked name="sex" value="1">男
+    <input type="radio" name="sex" value="0">女
+      <br>
+
+    <!--复选框  checked表示默认选择该选项框 点击一下就可以取消默认选中-->
+    <input type="checkbox" checked name="course" value="java">java
+    <input type="checkbox" name="course" value="go">go
+    <input type="checkbox" name="course" value="c/c++">c/c++ 
+    <br>
+
+    <!--多行文本域  cols="30" rows="10"控制文本域的大小-->
+    <textarea name="TXT" id="" cols="30" rows="10">
+文本域默认显示可以删的文字
+    </textarea>
+    <br>
+
+    </form>
+
+</body>
+</html>

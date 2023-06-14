@@ -1,0 +1,19 @@
+/* 标签选择器 */
+h1{
+    color: blue;
+    font-size: 20px;
+}
+/* 类class选择器 */
+.box{
+    color: maroon;
+}
+.ht{
+    color: rgb(255, 19, 19); 
+}
+/* id选择器 */
+#box{
+    color: rgb(16, 180, 70);
+    font-size: 70px;
+}
+/* 注意：如果类选择器和ID选择器同时对应到一个元素进行设置且不同，
+则ID选择器优先《就是说只使用ID选择器的样式设置》 */
