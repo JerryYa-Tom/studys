@@ -42,12 +42,16 @@ public class TestController extends BaseApiController {
                     name = "age", value = "年龄", required = true)
 
     })
-    public BaseResponse<String> test2(String name, Integer age) {
+    public BaseResponse<String> test2(String name, Integer age, Integer sex) {
+
         if (StringUtils.isEmpty(name)) {
             return setResultError("name 不能为空！");
         }
+        if (sex < 0 && sex > 1) {
+            return setResultError("sex不合法！");
+        }
         Integer a = 1 / age;
-        return setResultSuccess();
+        return setResultSuccessData(name + ":" + age + "岁,性别：" + (sex == 1 ? "男" : "女"));
 
     }
 }
