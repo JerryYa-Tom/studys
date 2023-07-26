@@ -31,7 +31,7 @@ public class TestController extends BaseApiController {
          * }
          */
     }
-
+/*
     @GetMapping("/test2")
     @ApiOperation(value = "测试add接口",
             notes = "根据名称和密码")
@@ -42,16 +42,33 @@ public class TestController extends BaseApiController {
                     name = "age", value = "年龄", required = true)
 
     })
-    public BaseResponse<String> test2(String name, Integer age, Integer sex) {
+    public BaseResponse<String> test2(String userName, String password) {
 
-        if (StringUtils.isEmpty(name)) {
-            return setResultError("name 不能为空！");
+        if (StringUtils.isEmpty(userName) && StringUtils.isEmpty(password)) {
+            return setResultError(" userName 不能为空！");
         }
-        if (sex < 0 && sex > 1) {
-            return setResultError("sex不合法！");
+        return setResultSuccessData("账号："+userName +"   密码："+ password);
+
+    }*/
+
+
+    @GetMapping("login")
+    @ApiOperation(value = "测试add接口",
+            notes = "根据名称和密码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query",
+                    name = "name", value = "名字", required = true),
+            @ApiImplicitParam(paramType = "query",
+                    name = "age", value = "年龄", required = true)
+
+    })
+
+    public BaseResponse<String> test2(String userName, String password) {
+
+        if (StringUtils.isEmpty(userName) && StringUtils.isEmpty(password)) {
+            return setResultError(" userName 不能为空！");
         }
-        Integer a = 1 / age;
-        return setResultSuccessData(name + ":" + age + "岁,性别：" + (sex == 1 ? "男" : "女"));
+        return setResultSuccessData("账号："+userName +"   密码："+ password);
 
     }
 }
