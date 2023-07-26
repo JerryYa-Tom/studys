@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/fzp-dev-parent/fzp-dev-parent.iml" filepath="$PROJECT_DIR$/fzp-dev-parent/fzp-dev-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fzp-dev-parent/fzp-edu-api/fzp-edu-api.iml" filepath="$PROJECT_DIR$/fzp-dev-parent/fzp-edu-api/fzp-edu-api.iml" />
+    </modules>
+  </component>
+</project>

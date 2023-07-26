@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+section .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login {
+    position: relative;
+    width: 500px;
+    min-height: 300px;
+    padding: 60px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    margin-left: 200px;
+    transform: scale(0.8);
+    opacity: 0.7;
+}
+
+.login h2 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #8f2c24;
+    margin-bottom: 10px;
+}
+
+.login .inputBox {
+    position: relative;
+}
+
+.login .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 15px 20px;
+    outline: none;
+    font-size: 1.25em;
+    color: #8f2c24;
+    border-radius: 5px;
+    background: #ffff;
+    border: none;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.login .group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login .group a {
+    font-size: 1.25em;
+    color: #8f2c24;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+.flower img {
+    position: absolute;
+}
+
+.login .inputBox i {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    color: #8f2c24;
+    cursor: pointer;
+}
+
+.login .inputBox .icon-see {
+    display: block;
+}
+
+.login .inputBox .icon-nosee {
+    display: none;
+}
+
+.login .inputBox.see .icon-see {
+    display: none;
+}
+
+.login .inputBox.see .icon-nosee {
+    display: block;
+}

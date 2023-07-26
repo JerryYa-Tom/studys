@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <!--    <link rel="stylesheet" href="../css/login.css">-->
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4179360_0trgibeq4zp.css">
-
+<!--    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
 </head>
 <body>
 
@@ -13,19 +14,25 @@
     <img src="../imgs/yuans1.jpg" class="bg" alt="这个是原神背景图">
     <div class="login">
         <h2>校校园</h2>
-        <form action="http://localhost:8080/login" method="get">
+        <form action="http://localhost:8080/login" method="post" onsubmit="encrypt()">
             <div class="inputBox">
-                <input type="text" name="userName" placeholder="账号" required id="username">
+                <input type="text" name="UserName" placeholder="账号" required id="username">
             </div>
+
             <div class="inputBox" id="pass">
-                <input type="password" name="password" placeholder="密码" required id="password">
+                <input type="password" name="Password" placeholder="密码" required id="password">
                 <i class="iconfont icon-see"></i>
                 <i class="iconfont icon-nosee"></i>
             </div>
+
             <div class="inputBox">
                 <input type="submit" value="登录" id="btn">
             </div>
+            <input type="hidden" name="userName" id="encryptedUserName">
+            <input type="hidden" name="password" id="encryptedPassword">
         </form>
+
+
         <div class="group">
             <a href="#">忘记密码</a>
             <a href="#">注册</a>
@@ -35,6 +42,9 @@
 </section>
 
 <script>
+    /*
+    * 点击密码框的小眼睛
+    * */
     const pass = document.querySelector('#pass');
     const see = document.querySelector('.icon-see');
     const noSee = document.querySelector('.icon-nosee');
@@ -47,127 +57,30 @@
         pass.classList.remove('see');
         inp.type = 'password';
     });
+
     /*
-    * 隐藏提交form表单时隐藏信息
+    * MD5加密
+    *     function encrypt() {
+        const Username = document.querySelector('#username').value;
+        const Password = document.querySelector('#password').value;
+        const encryptedUsername = md5(Username);
+        const encryptedPassword = md5(Password);
+        document.querySelector('#encryptedUserName').value = encryptedUsername;
+        document.querySelector('#encryptedPassword').value = encryptedPassword;
+    }
     * */
-    const form = document.getElementById('password','username')
-    form.password.value = "";
-    form.submit();
+
+    function encrypt() {
+        const Username = document.querySelector('#username').value;
+        const Password = document.querySelector('#password').value;
+        const encryptedUsername = CryptoJS.SHA256(Username).toString(CryptoJS.enc.Hex);
+        const encryptedPassword = CryptoJS.SHA256(Password).toString(CryptoJS.enc.Hex);
+        document.querySelector('#encryptedUserName').value = encryptedUsername;
+        document.querySelector('#encryptedPassword').value = encryptedPassword;
+    }
+
 </script>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-    }
 
-    section {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow-x: hidden;
-    }
-
-    section .bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .login {
-        position: relative;
-        width: 500px;
-        min-height: 300px;
-        padding: 60px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(3px);
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-        margin-left: 200px;
-        transform: scale(0.8);
-        opacity: 0.7;
-    }
-
-    .login h2 {
-        position: relative;
-        width: 100%;
-        text-align: center;
-        font-size: 2.5em;
-        font-weight: 600;
-        color: #8f2c24;
-        margin-bottom: 10px;
-    }
-
-    .login .inputBox {
-        position: relative;
-    }
-
-    .login .inputBox input {
-        position: relative;
-        width: 100%;
-        padding: 15px 20px;
-        outline: none;
-        font-size: 1.25em;
-        color: #8f2c24;
-        border-radius: 5px;
-        background: #ffff;
-        border: none;
-        margin-bottom: 30px;
-        opacity: 0.8;
-    }
-
-    .login .group {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .login .group a {
-        font-size: 1.25em;
-        color: #8f2c24;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-
-    .flower img {
-        position: absolute;
-    }
-
-    .login .inputBox i {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        font-size: 28px;
-        color: #8f2c24;
-        cursor: pointer;
-    }
-
-    .login .inputBox .icon-see {
-        display: block;
-    }
-
-    .login .inputBox .icon-nosee {
-        display: none;
-    }
-
-    .login .inputBox.see .icon-see {
-        display: none;
-    }
-
-    .login .inputBox.see .icon-nosee {
-        display: block;
-    }
-</style>
 </body>
 </html>

@@ -8,67 +8,33 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
 /**
  * 测试使用
+ *
+ * @author momo
  */
 @RestController //返回 JSON 类型数据格式
 @Api(tags = "测试API接口")
 public class TestController extends BaseApiController {
 
-    @GetMapping("/test")
-
-    public BaseResponse<String> test() {
-        return setResultSuccessData("fzp");
-        /** 前端收到的JSON:
-         *
-         * {
-         *     "code": 200,
-         *     "msg": "ok",
-         *     "data": "fzp"
-         * }
-         */
-    }
-/*
-    @GetMapping("/test2")
+    @PostMapping("login")
     @ApiOperation(value = "测试add接口",
-            notes = "根据名称和密码")
+            notes = "根据用户名和密码")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query",
-                    name = "name", value = "名字", required = true),
+                    name = "userName", value = "用户名", required = true),
             @ApiImplicitParam(paramType = "query",
-                    name = "age", value = "年龄", required = true)
-
+                    name = "password", value = "密码", required = true)
     })
-    public BaseResponse<String> test2(String userName, String password) {
-
+    public BaseResponse<String> login(String userName, String password) {
         if (StringUtils.isEmpty(userName) && StringUtils.isEmpty(password)) {
             return setResultError(" userName 不能为空！");
         }
-        return setResultSuccessData("账号："+userName +"   密码："+ password);
-
-    }*/
-
-
-    @GetMapping("login")
-    @ApiOperation(value = "测试add接口",
-            notes = "根据名称和密码")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query",
-                    name = "name", value = "名字", required = true),
-            @ApiImplicitParam(paramType = "query",
-                    name = "age", value = "年龄", required = true)
-
-    })
-
-    public BaseResponse<String> test2(String userName, String password) {
-
-        if (StringUtils.isEmpty(userName) && StringUtils.isEmpty(password)) {
-            return setResultError(" userName 不能为空！");
-        }
-        return setResultSuccessData("账号："+userName +"   密码："+ password);
+        return setResultSuccessData("账号：" + userName + "   密码：" + password);
 
     }
 }

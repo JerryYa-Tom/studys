@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4179360_0trgibeq4zp.css">
+<!--    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+</head>
+<body>
+
+<section>
+    <img src="../imgs/yuans1.jpg" class="bg" alt="这个是原神背景图">
+    <div class="login">
+        <h2>校校园</h2>
+        <form action="http://localhost:8080/login" method="post" onsubmit="encrypt()">
+            <div class="inputBox">
+                <input type="text" name="UserName" placeholder="账号" required id="username">
+            </div>
+
+            <div class="inputBox" id="pass">
+                <input type="password" name="Password" placeholder="密码" required id="password">
+                <i class="iconfont icon-see"></i>
+                <i class="iconfont icon-nosee"></i>
+            </div>
+
+            <div class="inputBox">
+                <input type="submit" value="登录" id="btn">
+            </div>
+            <input type="hidden" name="userName" id="encryptedUserName">
+            <input type="hidden" name="password" id="encryptedPassword">
+        </form>
+
+
+        <div class="group">
+            <a href="#">忘记密码</a>
+            <a href="#">注册</a>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    /*
+    * 点击密码框的小眼睛
+    * */
+    const pass = document.querySelector('#pass');
+    const see = document.querySelector('.icon-see');
+    const noSee = document.querySelector('.icon-nosee');
+    const inp = document.querySelector('#pass input');
+    see.addEventListener('click', () => {
+        pass.classList.add('see');
+        inp.type = 'text';
+    });
+    noSee.addEventListener('click', () => {
+        pass.classList.remove('see');
+        inp.type = 'password';
+    });
+
+    /*
+    * MD5加密
+    *     function encrypt() {
+        const Username = document.querySelector('#username').value;
+        const Password = document.querySelector('#password').value;
+        const encryptedUsername = md5(Username);
+        const encryptedPassword = md5(Password);
+        document.querySelector('#encryptedUserName').value = encryptedUsername;
+        document.querySelector('#encryptedPassword').value = encryptedPassword;
+    }
+    * */
+
+    function encrypt() {
+        const Username = document.querySelector('#username').value;
+        const Password = document.querySelector('#password').value;
+        const encryptedUsername = CryptoJS.SHA256(Username).toString(CryptoJS.enc.Hex);
+        const encryptedPassword = CryptoJS.SHA256(Password).toString(CryptoJS.enc.Hex);
+        document.querySelector('#encryptedUserName').value = encryptedUsername;
+        document.querySelector('#encryptedPassword').value = encryptedPassword;
+    }
+
+</script>
+
+
+</body>
+</html>
